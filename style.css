@@ -80,7 +80,6 @@ main {
     text-align: left;
     padding: 10px;
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
-    background-color: white;
 }
 
 .nav-menu a:hover{
