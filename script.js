@@ -36,3 +36,64 @@ function hideNyancat(){
     document.getElementById("display-nyancat").style.visibility = "hidden";
 }
 
+function fetch(url="https://eldoov.github.io/BU-MET-CS601/CS601-fetch/info.json") {
+    let xmlhttp = new XMLHttpRequest();
+    if (!xmlhttp) {
+        alert("Cannot create an XMLHTTP instance");
+        return false;
+    }
+
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            let dataObj = JSON.parse(this.responseText);
+            let my_degrees = dataObj.my_degree_data;
+            appendData(my_degrees);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+function appendData(data) {
+
+    const degrees = data;
+    const keys = ["Year", "Type", "School", "Major"];
+
+    let table = document.createElement('table');
+    let tableHead = document.createElement('thead');
+    let tableBody = document.createElement('tbody');
+
+    let headerRow = document.createElement('tr');
+    for (let i = 0; i < keys.length; i++) {
+        let cell = document.createElement('th');
+        cell.appendChild(document.createTextNode(keys[i]));
+        headerRow.appendChild(cell);
+    }
+    tableHead.appendChild(headerRow);
+    table.appendChild(tableHead);
+
+    degrees.forEach(entry => {
+        let row = document.createElement('tr');
+        for (let i = 0; i < keys.length; i++) {
+            let cell = document.createElement('td');
+            cell.appendChild(document.createTextNode(entry.degree[keys[i]]));
+            row.appendChild(cell);
+        }
+        tableBody.appendChild(row);
+    });
+    table.appendChild(tableBody);
+
+    table.setAttribute("class", "my_degrees");
+    document.getElementById("show_table").appendChild(table);
+
+    // disable button
+    document.getElementById("fetch_button").disabled = 'true';
+}
+
+function changebg() {
+    document.body.style.backgroundImage = 'url(media/white.jpg)';
+}
+
+
+
+
