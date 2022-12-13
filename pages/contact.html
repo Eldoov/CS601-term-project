@@ -27,13 +27,16 @@
             <li><a href="https://github.com/Eldoov" target="_blank">GitHub</a></li>
             <li><a href="https://www.instagram.com/Laidroc_/" target="_blank">Instagram</a></li>
         </ul>
-        <form name="myForm" action=mailto:zuowent@bu.com method="post" enctype="text/plain">
+        <form name="myForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="0f76d3aa-8196-4f9a-838f-3f4840d78d61">
+            <input type="hidden" name="apikey" value="0f76d3aa-8196-4f9a-838f-3f4840d78d61">
             <p>
             <input type="text" class="feedback-input" id="contact-name" name="name" minlength="2" placeholder="Name" required />
             <p>
             <input type="email" class="feedback-input" id="contact-email" size="30" placeholder="Email" required />
             <p>
             <textarea type="text" class="feedback-input" id="contact-comment" placeholder="Enter your comment here." required ></textarea>
+            <input type="hidden" name="redirect" value="https://web3forms.com/success">
             <p class="submit-section">
                 <input type="submit" name="submitButton" value="Submit">
         </form>
